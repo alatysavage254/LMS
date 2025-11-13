@@ -17,8 +17,16 @@
 	$payment=$db->conn->query("SELECT * FROM `payment` WHERE `loan_id`='$loan_id'") or die($db->conn->error);
 	$paid = $payment->num_rows;
 	$offset = $paid > 0 ? " offset $paid ": "";
-	$next = $db->conn->query("SELECT * FROM `loan_schedule` WHERE `loan_id`='$loan_id' ORDER BY date(due_date) ASC limit 1 $offset ")->fetch_assoc()['due_date'];
-	$add = (date('Ymd',strtotime($next)) < date("Ymd") ) ?  $penalty : 0;
+	$next_result = $db->conn->query("SELECT * FROM `loan_schedule` WHERE `loan_id`='$loan_id' ORDER BY date(due_date) ASC limit 1 $offset ");
+	
+	if($next_result && $next_result->num_rows > 0){
+		$next = $next_result->fetch_assoc()['due_date'];
+		$add = (date('Ymd',strtotime($next)) < date("Ymd") ) ?  $penalty : 0;
+	}else{
+		// No more payments due - loan should be completed
+		$next = date('Y-m-d');
+		$add = 0;
+	}
 ?>
 <hr />
 <div class="form-row">

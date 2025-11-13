@@ -220,19 +220,23 @@
 			$i=1;
 			
 			while($i==1){
-				$query=$this->conn->prepare("SELECT * FROM `loan` WHERE `ref_no` ='$ref_no' ") or die($this->conn->error);
+				$query=$this->conn->prepare("SELECT * FROM `loan` WHERE `ref_no` = ?") or die($this->conn->error);
+				$query->bind_param("s", $ref_no);
+				$query->execute();
+				$result = $query->get_result();
 				
-				$check=$query->num_rows;
+				$check=$result->num_rows;
 				if($check > 0){
 					$ref_no = mt_rand(1,99999999);
 				}else{
 					$i=0;
 				}
-				
+				$query->close();
 			}
 			
-			$query=$this->conn->prepare("INSERT INTO `loan` (`ref_no`, `ltype_id`, `borrower_id`, `purpose`, `amount`, `lplan_id`, `date_created`) VALUES(?, ?, ?, ?, ?, ?, ?)") or die($this->conn->error);
-			$query->bind_param("siisiis", $ref_no, $ltype, $borrower, $purpose, $loan_amount, $lplan, $date_created);
+			$status = 0; // 0=request (default status for new loans)
+			$query=$this->conn->prepare("INSERT INTO `loan` (`ref_no`, `ltype_id`, `borrower_id`, `purpose`, `amount`, `lplan_id`, `status`, `date_created`) VALUES(?, ?, ?, ?, ?, ?, ?, ?)") or die($this->conn->error);
+			$query->bind_param("siisiiis", $ref_no, $ltype, $borrower, $purpose, $loan_amount, $lplan, $status, $date_created);
 			
 			if($query->execute()){
 				$query->close();
@@ -313,9 +317,10 @@
 			
 			if($query->execute()){
 				$query->close();
-				$this->conn->close();
 				return true;
 			}
+			
+			return false;
 		}
 	}
 ?>

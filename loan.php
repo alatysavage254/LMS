@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Lacowe Loan Management System</title>
+    <title>Apex Loan Management System</title>
 
     <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   
@@ -354,6 +354,7 @@
 																			<option value="0" <?php echo ($fetch['status']==0)?'selected':''?>>For Approval</option>
 																			<option value="1" <?php echo ($fetch['status']==1)?'selected':''?>>Approved</option>
 																			<option value="2" <?php echo ($fetch['status']==2)?'selected':''?>>Released</option>
+																			<option value="3" <?php echo ($fetch['status']==3)?'selected':''?>>Completed</option>
 																			<option value="4" <?php echo ($fetch['status']==4)?'selected':''?>>Denied</option>
 																		<?php
 																			}
@@ -463,7 +464,7 @@
             <footer class="stocky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Lacowe Loan Management System <?php echo date("Y")?></span>
+                        <span>Copyright &copy; Apex Loan Management System <?php echo date("Y")?></span>
                     </div>
                 </div>
             </footer>
@@ -653,9 +654,9 @@
 					
 					
 					
-					$("#tpa").text("\u20B1 "+totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
-					$("#mpa").text("\u20B1 "+monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
-					$("#pa").text("\u20B1 "+penalty.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#tpa").text("Ksh "+totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#mpa").text("Ksh "+monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#pa").text("Ksh "+penalty.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
 					
 					$("#calcTable").show();
 				}
@@ -683,9 +684,9 @@
 					
 					
 					
-					$("#utpa").text("\u20B1 "+totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
-					$("#umpa").text("\u20B1 "+monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
-					$("#upa").text("\u20B1 "+penalty.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#utpa").text("Ksh "+totalAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#umpa").text("Ksh "+monthly.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
+					$("#upa").text("Ksh "+penalty.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));
 					
 
 				}

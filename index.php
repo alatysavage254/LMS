@@ -1,4 +1,7 @@
-<?php date_default_timezone_set("Etc/GMT+8");?>
+<?php 
+date_default_timezone_set("Etc/GMT+8");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Lacowe Loan Management System</title>
+    <title>Apex Loan Management System</title>
 
     <link href="css/all.css" rel="stylesheet" type="text/css">
   
@@ -19,7 +22,7 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="">Lacowe loan Management System</a>
+		<a class="navbar-brand" href="">Apex loan Management System</a>
 	</nav>
     <div class="container">
 		<div class="row justify-content-center">
@@ -41,7 +44,6 @@
                                             <input type="password" class="form-control form-control-user" name="password" placeholder="Enter Password here..." required="required">
                                         </div>
 										<?php 
-											session_start();
 											if(ISSET($_SESSION['message'])){
 												echo "<center><label class='text-danger'>".$_SESSION['message']."</label></center>";
 											}
@@ -57,7 +59,7 @@
         </div>
     </div>
 	<nav class="navbar fixed-bottom navbar-dark bg-dark">
-		<label style="color:#ffffff;">&copy; Copyright Lacowe Loan Management System</label>
+		<label style="color:#ffffff;">&copy; Copyright Apex Loan Management System</label>
 		<label style="color:#ffffff;">All Rights Reserved <?php echo date("Y")?> </label>
 	</nav>
 </body>

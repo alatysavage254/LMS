@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Lacowe Loan Management Information system</title>
+    <title>Apex Loan Management Information system</title>
 
     <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   
@@ -226,7 +226,7 @@
             <footer class="stocky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Lacowe Loan Management System <?php echo date("Y")?></span>
+                        <span>Copyright &copy; Apex Loan Management System <?php echo date("Y")?></span>
                     </div>
                 </div>
             </footer>
